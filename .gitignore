@@ -1,0 +1,13 @@
+*.pkl
+.env3/
+*.pyc
+__pycache__
+fbapp/static/*.jpg
+app.db
+geckodriver.log
+requirementsP2.txt
+.cache/
+database/
+pyUtil/
+instance/
+lazy.py

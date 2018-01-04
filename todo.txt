@@ -1,0 +1,69 @@
+=========== POPULR ==========
+links for the radarChart
+color of navbar
+color of the tags
+
+=========== OVERALL ==========
+What s to be done?
+- FE: make the UI more compelling
+- BE: the back end more professional
+- INFO: work on the information content, for R
+- EXT: think about where to get similar information for other language. Consign it here:
+google spread sheet
+
+Language | Pkg list | Dld info | git, so are same
+R           cran      cran
+Py
+Js
+
+=========== CONCRETLY ==========
+no. des (priority)
+write read me
+FE:
+9. add info boxes for each library with links to official webpage, github repo, stackoverflow stuff
+T 10. have preselection. random pair from a set of 200 well known libraries
+T 12. draw plotly ts must be made smarter (range, color, dates)
+T 13. function colorPalette
+T 14. add a box a flat with tabs (one for each selected item) that contains all relevant link
+16. Have another input box, the "task". Goal of this input box is to build up a database so to be able to propose alternatives.
+BE:
+8. hardcode the reference for hte function data_ret.relative_pop
+11. rename radar_gen to visualisation_gen and get rid of ts_gen after having copied its content (resizing) to a js file
+INFO:
+6. think about way of coming up with comparables (might be easier for some langauges... else nlp?) (+++)
+EXTENSION
+1. other languages (+)
+MISC
+3. commenting (+++)
+17. TS is kept undefined, that enables us to give different metrics depending on the language
+
+
+=============== PYTHON =============
+
+list of all packages: construct it scraping https://pypi.python.org/pypi?%3Aaction=browse
+https://pypi.python.org/simple/
+
+=============== TO READ TO LEARN =============
+
+Reactive resizing:
+start by reading:https://css-tricks.com/scale-svg/
+then https://gordonlesti.com/responsive-embedded-d3-svg/
+then https://www.packtpub.com/books/content/responsive-visualizations-using-d3js-and-bootstrap
+- use a combination of viewbox and preserveaspect ratio as in
+https://stackoverflow.com/questions/17626555/responsive-d3-chart
+- https://stackoverflow.com/questions/9400615/whats-the-best-way-to-make-a-d3-js-visualisation-layout-responsive
+- did not work?
+https://codepen.io/billdwhite/pen/mzowi
+http://eyeseast.github.io/visible-data/2013/08/28/responsive-charts-with-d3/
+
+More Ajax:
+http://attilathedud.me/dealing-with-flask-ajax/
+
+
+=============== ARCHIVE ================
+Autocomplete (DONE):
+- 1. http://itsolutionstuff.com/post/multi-select-autocomplete-jquery-example-with-codeexample.html
+- 2. https://select2.org/getting-started/basic-usage
+- 3. http://sliptree.github.io/bootstrap-tokenfield/  (super popular, super website, ... no update for 4 years..)
+- 4. https://github.com/dingyi1993/jquery-magicsearch   (great output but no starts etc.)
+Went for option 2, https://select2.org/appearance.

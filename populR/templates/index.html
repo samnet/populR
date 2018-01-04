@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <title> populR </title>
+  <!-- STANDARD: JQUERY, D3.JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+
+  <!-- POPPER (demanded by Bootstrap) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.8.2/umd/popper.js"></script>
+
+  <!-- BOOTSTRAP-->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+
+  <!-- RADAR -->
+  <link rel="stylesheet" type="text/css" href="../static/css/thirdParty/radar.css">
+
+  <!-- RADAR2 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src=https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js></script>
+
+  <!-- PLOTLY -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!--  AUTOCOMPLETE -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+  <!-- AUTOCOMPLETE THEME  (Applying the theme requires select2-bootstrap.css referenced after the default select2.css that comes with Select2)-->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css" rel="stylesheet" />
+
+  <!--  DATATABLES -->
+  <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+
+  <!-- General CSS -->
+  <link rel="stylesheet" type="text/css" href="../static/css/general.css">
+
+  <style>
+
+  /* navbar */
+    body { padding-top: 70px; }
+    navbar-text {font-size: 50%;}
+  /* boxes */
+    #box1, #box2, #box3, #box4 {
+      border: 2px solid black;
+      border-radius: 5px;
+    }
+  /* resizing */
+    .svg-container {
+  		width: 100%;
+  	}
+
+  #radarchart {
+    margin: 2cm 4cm 3cm 4cm;
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+
+  }
+  /* button */
+  .report, .row {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .cool {
+    color: #4885ed;
+  }
+  </style>
+
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+    <!-- logo -->
+    <a class="navbar-brand cool" href="#"> popul<b>R</b> </a>
+    <!-- Links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#"></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"></a>
+      </li>
+    </ul>
+
+      <!-- Navbar text-->
+    <span class="navbar-text cool">
+      Too many libraries... check how populR they are before wasting your time!
+    </span>
+  </nav>
+
+  <!-- CONTAINER -->
+  <div class="container-fluid">
+
+    <!-- Row 0 (inputs) -->
+    <div class="row">
+        <div class="col-12" align="center">
+            <form role="form" class='form-horizontal'>
+                <div class="form-group" align="center">
+                    <div class="col-3" align="center">
+                      <select id="input0" class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: 100%">
+                      </select>
+                    </div>
+                </div>
+                <!-- <div class="form-group">
+                    <div class="col-5" align="center">
+                      <select id="input1" class="js-example-basic-multiple" name="tasks[]" multiple="multiple" style="width: 100%">  </select>
+                    </div>
+                </div> -->
+            </form>
+        </div>
+      </div>
+
+  <!-- Row 1  (visualisations)-->
+    <div class="row">
+      <div class="col-12" align="center">
+        <div id="box1" align="center">
+          <!-- <div id="radarchart0" class="svg-container"></div> -->
+          <canvas id="radarchart0" width="300" height="190"></canvas>
+
+        </div>
+      </div>
+      <!-- <div class="col-6">
+        <div id="box2">
+          <table id="datatable0" cellspacing="0" class="display" width="100%"></table>
+        </div>
+      </div> -->
+    </div>
+
+    <!-- Row 2 -->
+    <div class="row">
+      <div class="col-12">
+        <div id="box3">
+          <div id="timeseries0"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="row">
+      <!-- <div class="col-6">
+        <div id="box4">
+          Relation Map. What libraries are used in conjunction with the one you looked for.
+        </div>
+      </div>
+      <div class="col-6">
+        <div id="box4">
+          Browse last open source projects done using this library.
+        </div>
+      </div> -->
+    </div>
+
+    <!-- Row Last -->
+    <div class="row">
+      <!-- <div class="col-12" align="center">
+        <button type="button" class="btn btn-info report">Generate Report</button>
+      </div> -->
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <p class="text-center">
+          A nascent, open source, project. <a href="mailto:dev@populr.com?subject=Feedback
+          &body=I love it!">Feedback & collaboration very welcome.</a>
+          Next step: build a recommandation engine.
+        </p>
+      </div>
+    </div>
+
+
+
+  <!-- GENERATOR SCRIPTS -->
+  <script src="../static/js/front_end_vars.js"></script>
+  <script src="../static/js/chart_build.js"></script>
+  <script src="../static/js/resizer.js"></script>
+  <script src="../static/js/page_build.js"></script>
+
+
+</body>
+</html>
