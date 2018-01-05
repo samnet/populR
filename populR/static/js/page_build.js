@@ -44,7 +44,21 @@ $(document).ready(function(){
   // Transform html select inputs to select2 inputs. Give them initial values.
 /////  $(document).ready(function() {
     // Pre-select (restrict to well known library pairs)
-    $('#input0').select2().val(preSelectionLibs).trigger("change");
+    // $('#input0').select2().val(preSelectionLibs).trigger("change");
+
+     $("#input0").select2({
+      width: "100%",
+       templateSelection: function (data, container) {
+         var selection = $('#input0').select2('data');
+         console.log(">>Selection",selection);
+         var idx = selection.indexOf(data);
+         console.log(">>Selection",data.text, data.idx, idx);
+         data.idx = idx;
+         $(container).css("background-color", COLORPAL[data.idx]);
+         return data.text;
+       },
+     }).val(preSelectionLibs).trigger("change");
+
     // Pre-select (restrict to well known library pairs)
     // $('#input1').select2().val(preSelectionTasks).trigger("change");
 /////  });
@@ -53,9 +67,6 @@ $(document).ready(function(){
   // Update page content based on selection
   $("#input0").change(function(){
       var selections = $(".firstSelectContainer").find(".select2-selection__choice");
-      console.log("cs: ", typeof(selections))
-      console.log("csl: ", selections.length)
-      // console.log("cs1: ", selections[1])
 
       if (selections.length) {
         console.log("selections.length")
@@ -83,39 +94,15 @@ $(document).ready(function(){
         });
       }
 
+     $("#input0").on("select2:select", function (evt) {
+       var element = evt.params.data.element;
+       var $element = $(element);
 
-    var selections = $(".firstSelectContainer").find(".select2-selection__choice");
-
-    if (selections.length) {
-      for (var i = 0; i < selections.length; i++) {
-        var selection = selections[i];
-        var selectionJQ = $(selection);
-        selectionJQ.attr("style", "background: " + COLORPAL[i] + " !important");
-      }
-    }
+       $element.detach();
+       $(this).append($element);
+       $(this).trigger("change");
+     });
   })
-
-  // // Give color to the tags
-  // $("#input0").change(function(){
-  //
-  //   var selections = $(".select2-selection__choice");
-  //   //this above will return all selections
-  //   console.log("THERE")
-  //
-  //   if (selections.length){
-  //     console.log("HERE")
-  //     for (var i = 0; i < selections.length; i++){
-  //       var selection = selections[i];
-  //       var selectionJQ = $(selection);
-  //
-  //       colorName	= COLORPAL[i];
-  //
-  //       selectionJQ.attr("style", "background: " + colorName + " !important");
-  //     }
-  //   }
-  // })
-
-
 
   // // Create DataTable
   // DTbuilder("datatable0")

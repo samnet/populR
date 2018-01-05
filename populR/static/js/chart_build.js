@@ -59,53 +59,6 @@ function radarConstructor(tag, arrayOfDataArrays = [[1, 1, 1, 1, 1]], axisTitles
 // - https://stackoverflow.com/questions/26521352/create-dynamic-chart-with-chart-js
 
 
-///////////////////////////// SPIDER CHART (OLD) ///////////////////////////////
-
-// AXISTITLES = ["Discussion forums (SO)", "Developer activity (GH)", "Web search (Google data)"
-//   , "Download volumes (ditto)", "Documentation quality"]
-
-// input: tag corresponding to div id (str), data (array of array),  titles (array)
-// function radarConstructor(tag, arrayOfDataArrays = [[1,1,1,1,1]], axisTitles = AXISTITLES) {
-//
-//   var w = 500;
-//   var h = 500;
-//   // var colorscale = d3.scale.category10();
-//   // console.log(colorscale)
-//   var dataSup = []  // builds the proper object for feeding into RadarChart
-//   arrayOfDataArrays.forEach(function(array, i){
-//     var dataSub = []
-//     array.forEach(function(measurement, j){
-//       dataSub.push({axis: axisTitles[j], value: measurement})
-//     })
-//     dataSup.push(dataSub)
-//   })
-//
-//   // clumsy color generating function...
-//   i = 0 // clumsy...
-//   couleur = function(){
-//     out = COLORPAL[i]
-//     i++
-//     return(out)
-//   }
-//   var colorscale = d3.scale.linear()
-//     .domain([0, 10])
-//     .range(['yellow', 'red']);
-//   //Options for the Radar chart, other than default
-//   var mycfg = {
-//     w: w,
-//     h: h,
-//     maxValue: 0.6,
-//     levels: 6,
-//     ExtraWidthX: 200,
-//     ExtraWidthY: 100
-//     , color: couleur
-//   }
-//
-//   //Call function to draw the Radar chart
-//   //Will expect that data is in %'s
-//   RadarChart.draw("#" + tag, dataSup, mycfg);
-// }
-
 //////////////////////////////// LINE CHART ////////////////////////////////////
 
 // input: data (an array of arrays, an id, the latter of the form [dates, prices], names (an array), title (str))
