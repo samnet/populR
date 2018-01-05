@@ -82,6 +82,17 @@ $(document).ready(function(){
            }
         });
       }
+
+
+    var selections = $(".firstSelectContainer").find(".select2-selection__choice");
+
+    if (selections.length) {
+      for (var i = 0; i < selections.length; i++) {
+        var selection = selections[i];
+        var selectionJQ = $(selection);
+        selectionJQ.attr("style", "background: " + COLORPAL[i] + " !important");
+      }
+    }
   })
 
   // // Give color to the tags
