@@ -70,6 +70,28 @@ $(document).ready(function(){
       }
   })
 
+  // Give color to the tags
+  $("#input0").change(function(){
+
+    var selections = $(".select2-selection__choice");
+    //this above will return all selections
+    console.log("THERE")
+
+    if (selections.length){
+      console.log("HERE")
+      for (var i = 0; i < selections.length; i++){
+        var selection = selections[i];
+        var selectionJQ = $(selection);
+
+        colorName	= COLORPAL[i];
+
+        selectionJQ.attr("style", "background: " + colorName + " !important");
+      }
+    }
+  })
+
+
+
   // // Create DataTable
   // DTbuilder("datatable0")
   //
