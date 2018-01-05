@@ -50,9 +50,7 @@ $(document).ready(function(){
       width: "100%",
        templateSelection: function (data, container) {
          var selection = $('#input0').select2('data');
-         console.log(">>Selection",selection);
          var idx = selection.indexOf(data);
-         console.log(">>Selection",data.text, data.idx, idx);
          data.idx = idx;
          $(container).css("background-color", COLORPAL[data.idx]);
          return data.text;
