@@ -42,16 +42,30 @@ $(document).ready(function(){
   // })
 
   // Transform html select inputs to select2 inputs. Give them initial values.
-  $(document).ready(function() {
+/////  $(document).ready(function() {
     // Pre-select (restrict to well known library pairs)
     $('#input0').select2().val(preSelectionLibs).trigger("change");
     // Pre-select (restrict to well known library pairs)
     // $('#input1').select2().val(preSelectionTasks).trigger("change");
-  });
+/////  });
   $.fn.select2.defaults.set( "theme", "bootstrap" );
 
   // Update page content based on selection
   $("#input0").change(function(){
+      var selections = $(".firstSelectContainer").find(".select2-selection__choice");
+      console.log("cs: ", typeof(selections))
+      console.log("csl: ", selections.length)
+      // console.log("cs1: ", selections[1])
+
+      if (selections.length) {
+        console.log("selections.length")
+        for (var i = 0; i < selections.length; i++) {
+          var selection = selections[i];
+          var selectionJQ = $(selection);
+          selectionJQ.attr("style", "background: " + COLORPAL[i] + " !important");
+        }
+      }
+
       currentSelection = $("#input0").val()
       if (currentSelection.length > 0) { // do nothing if change is deletion of unique selected tag
          $.ajax({
@@ -70,25 +84,25 @@ $(document).ready(function(){
       }
   })
 
-  // Give color to the tags
-  $("#input0").change(function(){
-
-    var selections = $(".select2-selection__choice");
-    //this above will return all selections
-    console.log("THERE")
-
-    if (selections.length){
-      console.log("HERE")
-      for (var i = 0; i < selections.length; i++){
-        var selection = selections[i];
-        var selectionJQ = $(selection);
-
-        colorName	= COLORPAL[i];
-
-        selectionJQ.attr("style", "background: " + colorName + " !important");
-      }
-    }
-  })
+  // // Give color to the tags
+  // $("#input0").change(function(){
+  //
+  //   var selections = $(".select2-selection__choice");
+  //   //this above will return all selections
+  //   console.log("THERE")
+  //
+  //   if (selections.length){
+  //     console.log("HERE")
+  //     for (var i = 0; i < selections.length; i++){
+  //       var selection = selections[i];
+  //       var selectionJQ = $(selection);
+  //
+  //       colorName	= COLORPAL[i];
+  //
+  //       selectionJQ.attr("style", "background: " + colorName + " !important");
+  //     }
+  //   }
+  // })
 
 
 
